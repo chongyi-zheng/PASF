@@ -133,7 +133,6 @@ class MdpPathCollector(PathCollector):
         return stats
 
     def get_snapshot(self):
-        # TODO (chongyi zheng): Do we need to save epoch path as well?
         snapshot_dict = dict(
             policy=self._policy,
             num_steps_total=self._num_steps_total,

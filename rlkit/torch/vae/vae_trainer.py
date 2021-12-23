@@ -444,7 +444,6 @@ class FairVAETrainer(object):
         return stats
 
     def get_snapshot(self):
-        # TODO (chongyi zheng): We need to reconstruct 'train_dataloader' and 'test_dataloader' manually
         snapshot = dict(
             env_idxs=self.env_idxs,
             envs=self.envs,
