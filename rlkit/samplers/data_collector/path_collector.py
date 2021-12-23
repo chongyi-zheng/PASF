@@ -143,7 +143,6 @@ class MdpPathCollector(PathCollector):
         return snapshot_dict
 
     def load_from_snapshot(self, snapshot):
-        # (chongyi zheng): Implement this for resuming
         self._policy = snapshot['policy']
         self._num_steps_total = snapshot['num_steps_total']
         self._num_paths_total = snapshot['num_paths_total']
@@ -188,7 +187,6 @@ class GoalConditionedPathCollector(MdpPathCollector):
         return snapshot
 
     def load_from_snapshot(self, snapshot):
-        # (chongyi zheng): Implement this for resuming
         super().load_from_snapshot(snapshot)
         self._observation_key = snapshot['observation_key']
         self._desired_goal_key = snapshot['desired_goal_key']

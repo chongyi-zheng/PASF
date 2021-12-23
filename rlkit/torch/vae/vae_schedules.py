@@ -12,7 +12,6 @@ def custom_schedule(epoch):
 
 
 def custom_schedule_2(epoch):
-    # (chongyi zheng): should_train, amount_to_train
     if epoch < 10:  # epoch = 0 ... 9
         return True, 1000
     elif epoch < 100:  # epoch = 0 ... 99

@@ -24,7 +24,7 @@ from rlkit.util.ml_util import LinearSchedule
 def skewfit_full_experiment(variant):
     variant['skewfit_variant']['save_vae_data'] = True
     full_experiment_variant_preprocess(variant)
-    # (chongyi zheng): Some potential bugs with initial VAE training may exist
+    # potential bugs with initial VAE training may exist
     train_vae_and_update_variant(variant)
     skewfit_experiment(variant['skewfit_variant'])
 
@@ -35,7 +35,6 @@ def full_experiment_variant_preprocess(variant):
     init_camera = variant.get('init_camera', None)
     imsize = variant.get('imsize', 84)
     expl_env_num = variant.get('expl_env_num', 3)
-    # (chongyi zheng): read checkpoint variants
     checkpoint = variant.get('checkpoint', False)
     checkpoint_dir = variant.get('checkpoint_dir', None)
     save_snapshot = variant.get('save_snapshot', False)
@@ -49,7 +48,6 @@ def full_experiment_variant_preprocess(variant):
     else:
         raise ValueError
 
-    # (chongyi zheng): vae pickle file
     if checkpoint:
         vae_path = osp.join(checkpoint_dir, 'vae.pkl')
         skewfit_variant['vae_path'] = vae_path if osp.exists(vae_path) else None
@@ -60,7 +58,6 @@ def full_experiment_variant_preprocess(variant):
     train_vae_variant['imsize'] = imsize
     skewfit_variant['imsize'] = imsize
     skewfit_variant['init_camera'] = init_camera
-    # (chongyi zheng): add checkpoint variants
     skewfit_variant['checkpoint'] = checkpoint
     skewfit_variant['checkpoint_dir'] = checkpoint_dir
     skewfit_variant['save_snapshot'] = save_snapshot

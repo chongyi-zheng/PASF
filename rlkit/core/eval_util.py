@@ -70,7 +70,7 @@ def get_average_returns(paths):
 def create_stats_ordered_dict(
         name,
         data,
-        discount=1.0,  # (chongyi zheng): add discount factor
+        discount=1.0,
         stat_prefix=None,
         always_show_all_stats=True,
         exclude_max_min=False,

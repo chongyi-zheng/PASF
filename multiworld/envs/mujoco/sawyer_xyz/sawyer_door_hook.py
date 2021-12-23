@@ -254,7 +254,6 @@ class SawyerDoorHookEnv(
     def set_to_goal(self, goal):
         # raise NotImplementedError("Hard to do because what if the hand is in "
         #                           "the door? Use presampled goals.")
-        # (chongyi zheng): implement this to set goal from presampled state_desired_goal
         # try to move hand first and then set door angle
         state_goal = goal['state_desired_goal']
         assert state_goal.shape == self.goal_space.shape, "invalid state goal"

@@ -132,7 +132,6 @@ class SharedObsDictRelabelingBuffer(ObsDictRelabelingBuffer):
         return snapshot
 
     def load_from_snapshot(self, snapshot):
-        # (chongyi zheng): Implement this
         super().load_from_snapshot(snapshot)
         # self._shared_obs_info = cloudpickle.loads(
         #     snapshot['shared_obs_info'])

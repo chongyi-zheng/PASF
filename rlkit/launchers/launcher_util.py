@@ -88,8 +88,8 @@ def save_experiment_data(dictionary, log_dir):
 def run_experiment_here(
         experiment_function,
         variant=None,
-        checkpoint=False,  # (chongyi zheng)
-        checkpoint_dir=None,  # (chongyi zheng)
+        checkpoint=False,
+        checkpoint_dir=None,
         exp_id=0,
         seed=None,
         use_gpu=True,
@@ -134,8 +134,8 @@ def run_experiment_here(
         variant=variant,
         exp_id=exp_id,
         seed=seed,
-        checkpoint=checkpoint,  # (chongyi zheng)
-        checkpoint_dir=checkpoint_dir,  # (chongyi zheng)
+        checkpoint=checkpoint,
+        checkpoint_dir=checkpoint_dir,
         snapshot_mode=snapshot_mode,
         snapshot_gap=snapshot_gap,
         base_log_dir=base_log_dir,
@@ -230,8 +230,8 @@ def setup_logger(
         log_dir=None,
         git_infos=None,
         script_name=None,
-        checkpoint=False,  # (chongyi zheng)
-        checkpoint_dir=None,  # (chongyi zheng)
+        checkpoint=False,
+        checkpoint_dir=None,
         **create_log_dir_kwargs
 ):
     """
@@ -264,7 +264,6 @@ def setup_logger(
         logger.log("Checkpoint directory doesn't exists")
         checkpoint = False
 
-    # (chongyi zheng): save checkpoint variants
     variant['checkpoint'] = checkpoint
     variant['checkpoint_dir'] = checkpoint_dir
 
@@ -458,8 +457,8 @@ def run_experiment(
         variant=None,
         exp_id=0,
         prepend_date_to_exp_prefix=False,
-        checkpoint=False,  # (chongyi zheng)
-        checkpoint_dir=None,  # (chongyi zheng)
+        checkpoint=False,
+        checkpoint_dir=None,
         use_gpu=False,
         snapshot_mode='last',
         snapshot_gap=1,
@@ -510,8 +509,8 @@ def run_experiment(
     :param exp_id: One experiment = one variant setting + multiple seeds
     :param prepend_date_to_exp_prefix: If False, do not prepend the date to
     the experiment directory.
-    :param checkpoint (chongyi zheng): checkpoint training from checkpoints
-    :param checkpoint_dir (chongyi zheng): directory to load checkpoints
+    :param checkpoint: checkpoint training from checkpoints
+    :param checkpoint_dir: directory to load checkpoints
     :param use_gpu:
     :param snapshot_mode: See rlkit.core.logging
     :param snapshot_gap: See rlkit.core.logging
@@ -604,8 +603,8 @@ def run_experiment(
     run_experiment_kwargs = dict(
         exp_prefix=exp_prefix,
         variant=variant,
-        checkpoint=checkpoint,  # (chongyi zheng)
-        checkpoint_dir=checkpoint_dir,  # (chongyi zheng)
+        checkpoint=checkpoint,
+        checkpoint_dir=checkpoint_dir,
         exp_id=exp_id,
         seed=seed,
         use_gpu=use_gpu,

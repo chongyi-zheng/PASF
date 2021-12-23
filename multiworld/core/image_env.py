@@ -140,11 +140,11 @@ class ImageEnv(ProxyEnv, MultitaskEnv):
 
     def reset(self):
         obs = self.wrapped_env.reset()
-        # (chongyi zheng): reset background iterator as well
+        # reset background iterator as well
         self.background_iter.reset()
         if self.num_goals_presampled > 0:
             goal = self.sample_goal()
-            # (chongyi zheng): constructing presampled goals from 'state_desired_goal'
+            # constructing presampled goals from 'state_desired_goal'
             if self.construct_presampled_goals:
                 env_state = self.wrapped_env.get_env_state()
                 self.wrapped_env.set_to_goal(goal)

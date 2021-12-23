@@ -128,7 +128,6 @@ class OnlineVaeRelabelingBuffer(SharedObsDictRelabelingBuffer):
         return snapshot
 
     def load_from_snapshot(self, snapshot):
-        # (chongyi zheng): Implement this for resuming
         super().load_from_snapshot(snapshot)
         self.vae = snapshot['vae']
         self._vae_sample_priorities = snapshot['vae_sample_priorities']
@@ -237,10 +236,10 @@ class OnlineVaeRelabelingBuffer(SharedObsDictRelabelingBuffer):
             cur_idx = next_idx
             next_idx += batch_size
             next_idx = min(next_idx, self._size)
-        self.vae.dist_mu = obs_sum / self._size  # (chongyi zheng): fit prior to latent encodings
+        self.vae.dist_mu = obs_sum / self._size  # fit prior to latent encodings
         self.vae.dist_std = np.sqrt(obs_square_sum / self._size - np.power(self.vae.dist_mu, 2))
 
-        if self._prioritize_vae_samples:  # (chongyi zheng): compute skew weights
+        if self._prioritize_vae_samples:  # compute skew weights
             """
             priority^power is calculated in the priority function
             for image_bernoulli_prob or image_gaussian_inv_prob and

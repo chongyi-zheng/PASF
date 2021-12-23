@@ -20,7 +20,7 @@ class BackgroundIterator(object):
             raise NotImplementedError
 
     def _load_background(self, path):
-        # (chongyi zheng): color order follows OpenCV style - (B, G, R)
+        # color order follows OpenCV style - (B, G, R)
         if int(self.idx) == 0:
             # default = cyan (1, 1, 0.6)
             return None
@@ -128,7 +128,7 @@ class BackgroundIterator(object):
             raise NotImplementedError
 
     def _load_video(self, path):
-        # (chongyi zheng): change this index range if we have more video
+        # change this index range if we have more video
         assert 0 <= int(self.idx) <= 15, "video index out of range"
         video_path = osp.abspath(osp.join(path, 'video' + str(self.idx) + '.mp4'))
         cap = cv2.VideoCapture(video_path)
@@ -140,7 +140,7 @@ class BackgroundIterator(object):
         i, ret = 0, True
         while (i < n and ret):
             ret, frame = cap.read()
-            # (chongyi zheng): we convert color channels in `render` function
+            # we convert color channels in `render` function
             # frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             buf[i] = frame
             i += 1

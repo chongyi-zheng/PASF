@@ -47,7 +47,6 @@ def create_stats_ordered_dict(
             and not always_show_all_stats):
         return OrderedDict({name: float(data)})
 
-    # (chongyi zheng): add sum matric
     stats = OrderedDict([
         # (name + ' Sum', np.sum(data)),
         (name + ' Mean', np.mean(data)),

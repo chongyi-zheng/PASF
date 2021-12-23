@@ -206,13 +206,11 @@ class Logger(object):
         self._tabular_prefix_str = ''.join(self._tabular_prefixes)
 
     def save_extra_data(self, data, file_name='extra_data.pkl', mode='joblib'):
-        # (chongyi zheng): add temp for atomic operation
         """
         Data saved here will always override the last entry
 
         :param data: Something pickle'able.
         """
-        # (chongyi zheng): add numpy save
         file_name = osp.join(self._snapshot_dir, file_name)
         if mode == 'joblib':
             import joblib
@@ -227,7 +225,6 @@ class Logger(object):
         return file_name
 
     def load_extra_data(self, file_name='extra_data.pkl', mode='joblib'):
-        # (chongyi zheng): Implement this to load epoch info
         file_name = osp.join(self._snapshot_dir, file_name)
         if mode == 'joblib':
             import joblib
@@ -326,7 +323,6 @@ class Logger(object):
         self._prefix_str = ''.join(self._prefixes)
 
     def save_itr_params(self, itr, params):
-        # (chongyi zheng): add temp for atomic operation
         if self._snapshot_dir:
             if self._snapshot_mode == 'all':
                 file_name = osp.join(self._snapshot_dir, 'itr_%d.pkl' % itr)
@@ -376,7 +372,6 @@ class Logger(object):
                 raise NotImplementedError
 
     def atomic_replace(self, file_names):
-        # (chongyi zheng): Implement atomic replacement here
         if self._snapshot_dir:
             assert isinstance(file_names, list)
             for file_name in file_names:

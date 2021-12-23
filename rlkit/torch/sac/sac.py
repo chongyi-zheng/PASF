@@ -230,7 +230,6 @@ class SACTrainer(TorchTrainer, LossFunction):
     def get_diagnostics(self):
         stats = super().get_diagnostics()
         stats.update(self.eval_statistics)
-        # (chongyi zheng): add discount factor in SAC diagnostics for discount metrics computing
         stats.update(discount=self.discount)
         return stats
 
@@ -257,7 +256,6 @@ class SACTrainer(TorchTrainer, LossFunction):
         ]
 
     def get_snapshot(self):
-        # (chongyi zheng): save optimizer for resuming
         return dict(
             env=self.env,
             policy=self.policy,
@@ -273,7 +271,6 @@ class SACTrainer(TorchTrainer, LossFunction):
         )
 
     def load_from_snapshot(self, snapshot):
-        # (chongyi zheng): implement this for resuming
         self.env = snapshot['env']
         self.policy = snapshot['policy']
         self.qf1 = snapshot['qf1']

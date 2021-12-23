@@ -30,6 +30,5 @@ class HERTrainer(TorchTrainer):
         return self._base_trainer.get_snapshot()
 
     def load_from_snapshot(self, snapshot):
-        # (chongyi zheng): Implement this for resuming
         assert hasattr(self._base_trainer, 'load_from_snapshot')
         self._base_trainer.load_from_snapshot(snapshot)

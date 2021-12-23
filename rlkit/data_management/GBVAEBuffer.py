@@ -87,7 +87,6 @@ class GoalBlockVAEBuffer:
         return
 
     def load_from_snapshot(self, snapshot):
-        # (chongyi zheng): Implement this for resuming
         for name, buffer in self.buffers.items():
             assert hasattr(buffer, 'load_from_snapshot')
             buffer.load_from_snapshot(snapshot[name])

@@ -90,7 +90,6 @@ class ReplayBuffer(object, metaclass=abc.ABCMeta):
         return {}
 
     def load_from_snapshot(self, snapshot):
-        # (chongyi zheng): abstract function for resuming
         pass
 
     def end_epoch(self, epoch):

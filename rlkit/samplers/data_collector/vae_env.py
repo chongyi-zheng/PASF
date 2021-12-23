@@ -147,7 +147,6 @@ class GBVAEEnvPathCollector():
             np.save(osp.join(logger.get_snapshot_dir(), 'latent%d' % epoch), data)
 
     def load_from_snapshot(self, snapshot):
-        # (chongyi zheng): Implement this for resuming
         self.oracle_dataset = snapshot['oracle_dataset']
         self.vae = snapshot['vae']
         for n, pc in self.path_collectors.items():

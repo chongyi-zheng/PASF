@@ -344,7 +344,7 @@ class FairVAETrainer(object):
         total_loss = 0.
         for latent in latents:
             latent_2 = []
-            for _ in range(self.negative_samples):  # (chongyi zheng): negative_samples * aligned_batch_size = diff_sample_size
+            for _ in range(self.negative_samples):  # negative_samples * aligned_batch_size = diff_sample_size
                 perm = np.random.permutation(len(latent))
                 latent_2.append(latent[perm])
             latent_2 = torch.cat(latent_2, dim=0)
@@ -459,7 +459,6 @@ class FairVAETrainer(object):
         return snapshot
 
     def load_from_snapshot(self, snapshot):
-        # (chongyi zheng): Implement this for resuming
         self.env_idxs = snapshot['env_idxs']
         self.envs = snapshot['envs']
         self.model = snapshot['model']

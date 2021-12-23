@@ -62,7 +62,6 @@ class BaseRLAlgorithm(object, metaclass=abc.ABCMeta):
         raise NotImplementedError('_train must implemented by inherited class')
 
     def _end_epoch(self, epoch, save_snapshot=False, save_intervals=10):
-        # (chongyi zheng): save large arrays individually
         if save_snapshot and epoch % save_intervals == 0:
             snapshot = self._get_snapshot()
             replay_buffer_snapshot = dict()
@@ -76,7 +75,6 @@ class BaseRLAlgorithm(object, metaclass=abc.ABCMeta):
                             delete_keys.append((k, buffer_k))
             for k, buffer_k in delete_keys:
                 del snapshot[k][buffer_k]
-            # (chongyi zheng): save aligned buffer snapshot
             aligned_buffer_snapshot = dict()
             delete_keys = []
             for k, v in snapshot.items():
@@ -135,7 +133,6 @@ class BaseRLAlgorithm(object, metaclass=abc.ABCMeta):
             snapshot['evaluation/' + k] = v
         for k, v in self.replay_buffer.get_snapshot().items():
             snapshot['replay_buffer/' + k] = v
-        # (chongyi zheng): save aligned buffer
         for k, v in self.aligned_buffer.get_snapshot().items():
             snapshot['aligned_buffer/' + k] = v
         return snapshot
@@ -148,7 +145,6 @@ class BaseRLAlgorithm(object, metaclass=abc.ABCMeta):
         expl_data_collector_snapshot = dict()
         eval_data_collector_snapshot = dict()
         replay_buffer_snapshot = dict()
-        # (chongyi zheng): save aligned buffer
         aligned_buffer_snapshot = dict()
 
         for k, v in snapshot.items():
@@ -211,7 +207,6 @@ class BaseRLAlgorithm(object, metaclass=abc.ABCMeta):
                                         discount=trainer_diagnostics.get('discount', None)),
                     prefix='exploration/' + id,
                 )
-            # (chongyi zheng): remove redundant env_infos
             # logger.record_dict(
             #     eval_util.get_generic_path_information(expl_paths),
             #     prefix="exploration/" + id,
@@ -234,7 +229,6 @@ class BaseRLAlgorithm(object, metaclass=abc.ABCMeta):
                                         discount=trainer_diagnostics.get('discount', None)),
                     prefix='evaluation/'+id,
                 )
-            # (chongyi zheng): remove redundant env_infos
             # logger.record_dict(
             #     eval_util.get_generic_path_information(eval_paths),
             #     prefix="evaluation/"+id,

@@ -74,7 +74,7 @@ class OnlineVaeAlgorithm(TorchBatchRLAlgorithm):
         snapshot = super()._get_snapshot()
         assert 'vae' not in snapshot
         snapshot['vae'] = self.vae
-        # (chongyi zheng): save vae trainer for resuming, note that vae_trainer is not directly pickleable
+        # save vae trainer for resuming, note that vae_trainer is not directly pickleable
         snapshot['vae_trainer'] = self.vae_trainer.get_snapshot()
         return snapshot
 
@@ -189,7 +189,6 @@ class OnlineVaeAlgorithm(TorchBatchRLAlgorithm):
         for k, v in replay_buffer_snapshot.items():
             buffer_k = k.replace(k.split('/')[0] + '/', '')
             snapshot['replay_buffer/' + k.split('/')[0]][buffer_k] = v
-        # (chongyi zheng): load aligned buffer
         aligned_buffer_snapshot = logger.load_extra_data('aligned_buffer.npz', mode='numpy')
         for k, v in aligned_buffer_snapshot.items():
             buffer_k = k.replace(k.split('/')[0] + '/', '')

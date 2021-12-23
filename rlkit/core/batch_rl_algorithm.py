@@ -54,7 +54,6 @@ class BatchRLAlgorithm(BaseRLAlgorithm, metaclass=abc.ABCMeta):
                                                   min_num_steps_before_training
 
     def _train(self, save_snapshot=False, save_intervals=10):
-        # (chongyi zheng): add _start_epoch == 0 condition
         if self.init_min_num_steps_before_training > 0 and self._start_epoch == 0:
             init_expl_paths = self.expl_data_collector.collect_new_paths(
                 self.max_path_length,
