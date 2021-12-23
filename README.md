@@ -25,7 +25,7 @@
 
 ## Installation
 
-Our code was adapted from [Rlkit](https://github.com/rail-berkeley/rlkit) and was tested on a Ubuntu 20.04 server.
+Our code was adapted from [rlkit](https://github.com/rail-berkeley/rlkit) and was tested on a Ubuntu 20.04 server.
 
 This instruction assumes that you have already installed NVIDIA driver, Anaconda, and MuJoCo. 
 
