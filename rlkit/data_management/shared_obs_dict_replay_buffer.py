@@ -115,10 +115,7 @@ class SharedObsDictRelabelingBuffer(ObsDictRelabelingBuffer):
         )
 
     def get_snapshot(self):
-        # TODO (chongyi zheng): Implement this
         snapshot = super().get_snapshot()
-        # (chongyi zheng): the following objects are not directly pickleable
-        # TODO (chongyi zheng): fix this
         # snapshot.update(
         #     shared_obs_info=self._shared_obs_info,
         #     shared_next_obs_info=self._shared_next_obs_info,

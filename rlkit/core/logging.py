@@ -352,7 +352,6 @@ class Logger(object):
         return file_name
 
     def load_itr_params(self, itr):
-        # TODO (chongyi zheng): Implement this to resume checkpoint
         if self._snapshot_dir:
             if self._snapshot_mode == 'all':
                 file_name = osp.join(self._snapshot_dir, 'itr_%d.pkl' % itr)

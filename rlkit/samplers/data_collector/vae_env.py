@@ -104,7 +104,6 @@ class GBVAEEnvPathCollector():
         return self.collect_aligned_paths(actions, paths)
 
     def get_snapshot(self):
-        # TODO (chongyi zheng): use exact env name for easy resuming
         snapshot = dict(
             vae=self.vae,
             oracle_dataset=self.oracle_dataset

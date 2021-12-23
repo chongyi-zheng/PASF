@@ -177,12 +177,12 @@ def create_exp_name(exp_prefix, exp_id=0, seed=0):
     :param exp_id:
     :return:
     """
-    # TODO (chongyi zheng): unique exp name for debugging
+    # TODO: unique exp name for debugging
     # now = datetime.datetime.now(dateutil.tz.tzlocal())
     # timestamp = now.strftime('%Y_%m_%d_%H_%M_%S')
     # return "%s_%s_%04d--s-%d" % (exp_prefix, timestamp, exp_id, seed)
 
-    # (chongyi zheng): only specify seed here
+    # TODO: only specify seed here
     # return "%s--s-%d" % (exp_prefix, seed)
     return "s-%d" % seed
 
@@ -260,7 +260,6 @@ def setup_logger(
     """
     if git_infos is None:
         git_infos = get_git_infos(conf.CODE_DIRS_TO_MOUNT)
-    # TODO (chongyi zheng): Implement this to checkpoint log
     if checkpoint and (not osp.exists(checkpoint_dir) or not os.listdir(checkpoint_dir)):
         logger.log("Checkpoint directory doesn't exists")
         checkpoint = False

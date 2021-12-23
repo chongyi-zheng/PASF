@@ -192,14 +192,14 @@ class ObsDictRelabelingBuffer(ReplayBuffer):
             resampled_goals[num_rollout_goals:last_env_goal_idx] = (
                 env_goals[self.desired_goal_key]
             )
-            for goal_key in self.goal_keys:  # TODO (chongyi zheng): this loop by original authors seems redundant
+            for goal_key in self.goal_keys:  # this loop by original authors seems redundant
                 new_obs_dict[goal_key][num_rollout_goals:last_env_goal_idx] = (
                     env_goals[goal_key]
                 )
                 new_next_obs_dict[goal_key][
                     num_rollout_goals:last_env_goal_idx
                 ] = env_goals[goal_key]
-        if num_future_goals > 0:  # (chongyi zheng): sample goals from future achieved observations like HER
+        if num_future_goals > 0:  # sample goals from future achieved observations like HER
             future_indices = indices[-num_future_goals:]
             possible_future_obs_lens = np.array([
                 len(self._idx_to_future_obs_idx[i]) for i in future_indices
@@ -217,7 +217,7 @@ class ObsDictRelabelingBuffer(ReplayBuffer):
             resampled_goals[-num_future_goals:] = self._next_obs[
                 self.achieved_goal_key
             ][future_obs_idxs]
-            for goal_key in self.goal_keys:  # TODO (chongyi zheng): this loop by original authors seems redundant
+            for goal_key in self.goal_keys:  # this loop by original authors seems redundant
                 new_obs_dict[goal_key][-num_future_goals:] = \
                     self._next_obs[goal_key][future_obs_idxs]
                 new_next_obs_dict[goal_key][-num_future_goals:] = \
@@ -279,7 +279,6 @@ class ObsDictRelabelingBuffer(ReplayBuffer):
         }
 
     def get_snapshot(self):
-        # TODO (chongyi zheng): Implement this
         # convert to string to reduce save time?
         snapshot = super().get_snapshot()  # empty dict
         # snapshot.update(
@@ -330,7 +329,6 @@ class ObsDictRelabelingBuffer(ReplayBuffer):
         return snapshot
 
     def load_from_snapshot(self, snapshot):
-        # TODO (chongyi zheng): Implement this
         # recover from string?
         super().load_from_snapshot(snapshot)
         # self._obs = pickle.loads(

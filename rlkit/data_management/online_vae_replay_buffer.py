@@ -116,7 +116,6 @@ class OnlineVaeRelabelingBuffer(SharedObsDictRelabelingBuffer):
                 desired_decoded_goals[idx]
 
     def get_snapshot(self):
-        # TODO (chongyi zheng): Implement this
         snapshot = super().get_snapshot()
         snapshot.update(
             vae=self.vae,

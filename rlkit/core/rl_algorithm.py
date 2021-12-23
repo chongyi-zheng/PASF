@@ -141,7 +141,6 @@ class BaseRLAlgorithm(object, metaclass=abc.ABCMeta):
         return snapshot
 
     def _load_from_snapshot(self, snapshot):
-        # TODO (chongyi zheng): Implement this to checkpoint training
         self.expl_envs = snapshot['expl_envs']
         self.eval_envs = snapshot['eval_envs']
 

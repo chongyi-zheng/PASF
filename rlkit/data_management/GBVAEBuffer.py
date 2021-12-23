@@ -68,7 +68,6 @@ class GoalBlockVAEBuffer:
             buffer.refresh_latents(epoch)
 
     def get_snapshot(self):  # get model snapshot
-        # TODO (chongyi zheng): Implement this
         snapshot_dict = dict()
         for name, buffer in self.buffers.items():
             snapshot = buffer.get_snapshot()

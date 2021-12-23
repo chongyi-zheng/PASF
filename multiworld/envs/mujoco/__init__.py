@@ -23,17 +23,13 @@ def register_sawyer_envs():
 
 
 def register_dg_sawyer_envs():
-    """
-    Beining Han
-    """
-
     for i in range(6):
         tag = 'Domain' + str(i)
         register(
             id='SawyerReachXYZEnv'+tag+'-v0',
             entry_point='multiworld.envs.mujoco.sawyer_xyz.sawyer_reach:SawyerReachXYZEnv',
             tags={
-                'author': 'beining'
+                'author': 'pasf_author'
             },
             kwargs={
                 'domain': tag,
@@ -49,7 +45,7 @@ def register_dg_sawyer_envs():
             entry_point='multiworld.envs.mujoco.sawyer_xyz'
                         '.sawyer_push_nips:SawyerPushAndReachXYEasyEnv',
             tags={
-                'author': 'beining',
+                'author': 'pasf_author',
             },
             kwargs=dict(
                 force_puck_in_goal_space=False,
@@ -74,7 +70,7 @@ def register_dg_sawyer_envs():
             entry_point='multiworld.envs.mujoco.sawyer_xyz'
                         '.sawyer_door_hook:SawyerDoorHookEnv',
             tags={
-                'author': 'beining',
+                'author': 'pasf_author',
             },
             kwargs=dict(
                 goal_low=(-0.1, 0.45, 0.1, 0),
@@ -92,7 +88,7 @@ def register_dg_sawyer_envs():
             entry_point='multiworld.envs.mujoco.sawyer_xyz'
                         '.sawyer_door_hook:SawyerDoorHookEnv',
             tags={
-                'author': 'beining',
+                'author': 'pasf_author',
             },
             kwargs=dict(
                 goal_low=(-0.1, 0.45, 0.1, 0),
@@ -715,7 +711,7 @@ def register_development_sawyer_envs():
         entry_point='multiworld.envs.mujoco.sawyer_xyz'
                     '.sawyer_door_hook:SawyerDoorHookEnv',
         tags={
-            'author': 'beining',
+            'author': 'pasf_author',
         },
         kwargs=dict(
             goal_low=(-0.1, 0.45, 0.1, 0),

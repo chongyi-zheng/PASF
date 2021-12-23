@@ -47,7 +47,6 @@ if __name__ == "__main__":
     parser.add_argument('--checkpoint-prefix', type=str, default='./data')
     parser.add_argument('--save-snapshot', action='store_true', default=False)
     parser.add_argument('--save-intervals', type=int, default=5)
-    # TODO (chongyi zheng): use this directory to resume
     args = parser.parse_args()
 
     presample, path, goal_idx, expl_mode, eval_mode = setting(args.setting)

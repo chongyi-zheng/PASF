@@ -81,9 +81,9 @@ def train_vae_and_update_variant(variant):
             skewfit_variant['vae_img_data'] = img_data
             skewfit_variant['vae_idx_data'] = idx_data
         logger.save_extra_data(vae, 'vae.pkl', mode='pickle')
-        logger.remove_tabular_output('vae_progress.csv',  # TODO (chongyi zheng): redundant?
+        logger.remove_tabular_output('vae_progress.csv',
             relative_to_snapshot_dir=True,)
-        logger.add_tabular_output('progress.csv',  # TODO (chongyi zheng): redundant?
+        logger.add_tabular_output('progress.csv',
             relative_to_snapshot_dir=True,)
         skewfit_variant['vae_path'] = vae  # just pass the VAE directly
     else:
