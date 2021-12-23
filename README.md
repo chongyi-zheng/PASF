@@ -51,8 +51,9 @@ Download the goals from the following link and put it here: `(PASF DIR)/multiwor
 $ ls (PASF DIR)/multiworld/envs/mujoco
 ... goals ... 
 ```
+3. (Optional) Speed up with GPU rendering
 
-### 3. (Optional) Speed up with GPU rendering
+### 3. (Optional) Speed-up with GPU rendering
 
 Note: GPU rendering for mujoco-py speeds up training a lot but consumes more GPU memory at the same time.
 
