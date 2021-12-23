@@ -1,67 +1,80 @@
-# PASF
+# Learning Domain Invariant Representations in Goal-conditioned Block MDPs
+
+<p align="center"> Beining Han, &nbsp; Chongyi Zheng, &nbsp; Harris Chan, &nbsp; Keiran Paster, &nbsp; Michael R. Zhang, &nbsp; Jimmy Ba</p>
+
+<p align="center">
+   <a href="https://arxiv.org/abs/2110.14248">paper</a>
+</p>
+
+**Summary**: Deep Reinforcement Learning agents often face unanticipated environmental changes after deployment in the real world. These changes are often spurious and unrelated to the underlying problem, such as background shifts for visual input agents. Unfortunately, deep RL policies are usually sensitive to these changes and fail to act robustly against them. This resembles the problem of domain generalization in supervised learning. In this work, we study this problem for goal-conditioned RL agents. We propose a theoretical framework in the Block MDP setting that characterizes the generalizability of goal-conditioned policies to new environments. Under this framework, we develop a practical method PA-SkewFit (PASF) that enhances domain generalization. 
+
+```
+@article{han2021learning,
+  title={Learning Domain Invariant Representations in Goal-conditioned Block MDPs},
+  author={Han, Beining and Zheng, Chongyi and Chan, Harris and Paster, Keiran and Zhang, Michael and Ba, Jimmy},
+  journal={Advances in Neural Information Processing Systems},
+  volume={34},
+  year={2021}
+}
+```
 
 ## Installation
 
-This instruction assumes that you already have a conda installation. 
+Our code was adapted from [Rlkit](https://github.com/rail-berkeley/rlkit) and was tested on a Ubuntu 20.04 server.
 
-1. Prepare the environmental paths for Mujoco. Add these lines to the `~/.bashrc`:
+This instruction assumes that you have already installed NVIDIA driver, Anaconda, and MuJoCo. 
 
-```
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/h/$USER/.mujoco/mujoco200/bin
-export MUJOCO_PY_MJPRO_PATH=/pkgs/mujoco200
-export MUJOCO_PY_MJKEY_PATH=/pkgs/mujoco200/mjkey.txt
-```   
-Source the bashrc file:
+You'll need to get your own MuJoCo key if you want to use MuJoCo.
 
-```
-source ~/.bashrc
-```
+### 1. Create Anaconda environment
 
-I copied the Mujoco 2.0 over to my own directory as well:
+Install the included Anaconda environment
 
 ```
-mkdir ~/.mujoco
-cp -r /pkgs/mujoco200 ~/.mujoco/
-```
-   
-2. Install and use the included Ananconda environment
-```
-$ conda env create -f environment/rlkit_env.yml
-$ source activate rlkit_env
-```
-This Anaconda environment use MuJoCo 2.0 and gym 0.15.7.
-
-It may be easier to install everything instead of `mujoco_py` first and then to install with:
-```
-pip install --no-cache-dir --upgrade  'mujoco-py<2.1,>=2.0'
+$ conda env create -f environment/pasf_env.yml
+$ source activate pasf_env
+(pasf_env) $ python
 ```
 
-You can check that the `mujoco_py` was installed properly 
+### 2. Download the goals
+
+Download the goals from the following link and put it here: `(PASF DIR)/multiworld/envs/mujoco`.
+
+- https://drive.google.com/drive/folders/1L9SYFADWmFzdP1c6wf2yo2WjOlXJh8Iu?usp=sharing
 
 ```
-(rlkit_env) harris@vremote:~/Fair-SkewFit$ python
-Python 3.7.4 (default, Aug 13 2019, 20:35:49)
-[GCC 7.3.0] :: Anaconda, Inc. on linux
-Type "help", "copyright", "credits" or "license" for more information.
->>> import mujoco_py
->>> import gym
->>> gym.make('Hopper-v2')
-/h/harris/miniconda/envs/rlkit_env/lib/python3.7/site-packages/gym/logger.py:30: UserWarning: WARN: Box bound precision lowered by casting to float32
-  warnings.warn(colorize('%s: %s'%('WARN', msg % args), 'yellow'))
-<TimeLimit<HopperEnv<Hopper-v2>>>
-```
-3. Make sure that there is a `data` folder under `Fair-SkewFit`
-
-4. Create a `slrm_trash_log` folder in your home directory (i.e. same level as `Fair-SkewFit`). We will store the output and error log files in these folders
-
-5. Test to see if this environment works by running a trial bash script. From the `Fair-SkewFit` directory, run:
-
-```
-source slurm/mmd_constant_launcher_test.sh
+$ ls (PASF DIR)/multiworld/envs/mujoco
+... goals ... 
 ```
 
-which will submit a single job to run one experiment. Check if the job lands and does not error out. 
-There will be:
+### 3. (Optional) Turn on GPU rendering for mujoco-py
 
-1. An error and an output log file in the `~/slrm_trash_log/` folder 
-2. Checkpoint folders in `/checkpoint/$USER/####/`. The results will then be copied to the `~/Fair-SkewFit/data` folder. 
+Note: GPU rendering for mujoco-py speeds up training a lot but it consumes much more GPU memory as well.
+
+Check this Issues: 
+
+- https://github.com/openai/mujoco-py/issues/581
+- https://github.com/openai/mujoco-py/issues/512
+
+Remember to do this stuff with the mujoco-py package inside of your **pasf_env**.
+
+## Running Experiments
+
+The following command run the PASF experiments for the four tasks: Reach, Door, Push, Pickup, in the learning curve.
+
+```
+
+```
+
+- The bash scripts only set ![equation](https://latex.codecogs.com/svg.image?%5Cinline%20%5Calpha_%7B%5Ctext%7BMMD%7D%7D), ![equation](https://latex.codecogs.com/svg.image?%5Cinline%20%5Calpha_%7B%5Ctext%7BDIFF%7D%7D), and ![equation](https://latex.codecogs.com/svg.image?%5Cinline%20%5Cbeta) with the exact values we used for LC.
+But you can play with other hyperparameters in python scripts under `(PASF DIR)/experiment`.
+
+- Results are recorded in `progress.csv` under `(PASF DIR)/data/` and 'variant.json' contains configuration for each experiment.
+
+- We simply set random seeds as 0, 1, 2, etc., and run experiments with 6-9 different seeds for each task.
+
+- Error and output logs can be found in `(PASF DIR)/terminal_log`.
+
+### Questions
+If you have any questions, comments, or suggestions, please reach out to Beining Han (bouldinghan@gmail.com) and Chongyi Zheng (chongyiz@andrew.cmu.edu).
+
