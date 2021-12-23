@@ -60,10 +60,14 @@ Remember to do this stuff with the mujoco-py package inside of your **pasf_env**
 
 ## Running Experiments
 
-The following command run the PASF experiments for the four tasks: Reach, Door, Push, Pickup, in the learning curve.
+The following command run the PASF experiments for the four tasks: Reach, Door, Push, Pickup, in the learning curve respectively.
 
 ```
-
+$ source activate pasf_env
+(pasf_env) $ bash (PASF DIR)/bash_scripts/pasf_reach_lc_exp.bash
+(pasf_env) $ bash (PASF DIR)/bash_scripts/pasf_door_lc_exp.bash
+(pasf_env) $ bash (PASF DIR)/bash_scripts/pasf_push_lc_exp.bash
+(pasf_env) $ bash (PASF DIR)/bash_scripts/pasf_pickup_lc_exp.bash
 ```
 
 - The bash scripts only set ![equation](https://latex.codecogs.com/svg.image?%5Cinline%20%5Calpha_%7B%5Ctext%7BMMD%7D%7D), ![equation](https://latex.codecogs.com/svg.image?%5Cinline%20%5Calpha_%7B%5Ctext%7BDIFF%7D%7D), and ![equation](https://latex.codecogs.com/svg.image?%5Cinline%20%5Cbeta) with the exact values we used for LC.
