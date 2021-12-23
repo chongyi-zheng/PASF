@@ -47,9 +47,9 @@ $ ls (PASF DIR)/multiworld/envs/mujoco
 ... goals ... 
 ```
 
-### 3. (Optional) Turn on GPU rendering for mujoco-py
+### 3. (Optional) Speed up with GPU rendering
 
-Note: GPU rendering for mujoco-py speeds up training a lot but it consumes much more GPU memory as well.
+Note: GPU rendering for mujoco-py speeds up training a lot but consumes more GPU memory at the same time.
 
 Check this Issues: 
 
@@ -72,6 +72,8 @@ $ source activate pasf_env
 
 - The bash scripts only set ![equation](https://latex.codecogs.com/svg.image?%5Cinline%20%5Calpha_%7B%5Ctext%7BMMD%7D%7D), ![equation](https://latex.codecogs.com/svg.image?%5Cinline%20%5Calpha_%7B%5Ctext%7BDIFF%7D%7D), and ![equation](https://latex.codecogs.com/svg.image?%5Cinline%20%5Cbeta) with the exact values we used for LC.
 But you can play with other hyperparameters in python scripts under `(PASF DIR)/experiment`.
+
+- Training and evaluation environments are chosen in python scripts for each task. You can find the backgrounds in `(PASF DIR)/multiworld/core/background` and domains in `(PASF DIR)/multiworld/envs/assets/sawyer_xyz`.
 
 - Results are recorded in `progress.csv` under `(PASF DIR)/data/` and 'variant.json' contains configuration for each experiment.
 
