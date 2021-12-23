@@ -6,6 +6,11 @@
    <a href="https://arxiv.org/abs/2110.14248">paper</a>
 </p>
 
+<p align="middle">
+  <img src="image/illus_align.png" width="250" />
+  <img src="image/Vae_struct.png" width="250" />
+</p>
+
 **Summary**: Deep Reinforcement Learning agents often face unanticipated environmental changes after deployment in the real world. These changes are often spurious and unrelated to the underlying problem, such as background shifts for visual input agents. Unfortunately, deep RL policies are usually sensitive to these changes and fail to act robustly against them. This resembles the problem of domain generalization in supervised learning. In this work, we study this problem for goal-conditioned RL agents. We propose a theoretical framework in the Block MDP setting that characterizes the generalizability of goal-conditioned policies to new environments. Under this framework, we develop a practical method PA-SkewFit (PASF) that enhances domain generalization. 
 
 ```
