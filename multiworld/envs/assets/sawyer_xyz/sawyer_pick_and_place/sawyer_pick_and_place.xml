@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco>
+<!--    <include file="../shared_config.xml"></include>-->
+    <asset>
+        <texture name="wood" file="../../texture/wood.png" type="cube"/>
+        <material shininess=".1" name="wood" texture="wood" specular="0.4"/>
+
+        <texture name="real_door" file="../../texture/real_door.png" type="cube"/>
+        <material shininess=".1" name="real_door" texture="real_door" specular=".4"/>
+
+        <texture name="darkwood" file="../../texture/darkwood.png" type="cube"/>
+        <material shininess=".1" name="darkwood" texture="darkwood" specular="0.4"/>
+
+        <texture name="granite" file="../../texture/granite.png" type="cube"/>
+        <material shininess=".1" name="granite" texture="granite" specular="0.4"/>
+
+        <texture name="light_wood" file="../../texture/light_wood.png" type="cube"/>
+        <material shininess=".1" name="light_wood" texture="light_wood" specular="0.4"/>
+
+        <texture name="light_wood_v2" file="../../texture/light_wood_v2.png" type="cube"/>
+        <material shininess=".1" name="light_wood_v2" texture="light_wood_v2" specular="0.4"/>
+
+        <texture name="lightening" file="../../pattern/lightening.png" type="cube"/>
+        <material shininess=".1" name="lightening" texture="lightening" specular="0.4"/>
+
+        <texture name="mac" file="../../pattern/mac.png" type="cube"/>
+        <material shininess=".1" name="mac" texture="mac" specular="0.4"/>
+
+        <texture name="bronze" file="../../pattern/bronze.png" type="cube"/>
+        <material shininess=".1" name="bronze" texture="bronze" specular="0.4"/>
+
+        <texture name="metal" file="../../pattern/metal.png" type="cube"/>
+        <material shininess=".1" name="metal" texture="metal" specular="0.4"/>
+
+        <texture name="watermetal" file="../../pattern/watermetal.png" type="cube"/>
+        <material shininess=".1" name="watermetal" texture="watermetal" specular="0.4"/>
+
+        <texture name="woods" file="../../pattern/woods.png" type="cube"/>
+        <material shininess=".1" name="woods" texture="woods" specular="0.4"/>
+
+        <texture name="xpwall" file="../../pattern/xpwall.png" type="cube"/>
+        <material shininess=".1" name="xpwall" texture="xpwall" specular="0.4"/>
+
+        <texture name="checkerboard-dark" file="../../pattern/checkerboard-dark.png" type="cube"/>
+        <material shininess=".1" name="checkerboard-dark" texture="checkerboard-dark" specular="0.4"/>
+
+        <texture name="checkerboard-fancy" file="../../pattern/checkerboard-fancy.png" type="cube"/>
+        <material shininess=".1" name="checkerboard-fancy" texture="checkerboard-fancy" specular="0.4"/>
+
+
+<!--        <texture type="skybox" builtin="gradient" rgb1="1 1 1" rgb2="1 1 1" width="32" height="32"></texture>-->
+        <texture type="skybox" builtin="gradient" rgb1=".8 1 1" rgb2=".6 1 1" width="32" height="32"></texture>
+        <mesh name="pedestal" file="pedestal.stl" />
+        <mesh name="base" file="base.stl" />
+        <mesh name="l0" file="l0.stl" />
+        <mesh name="head" file="head.stl" />
+        <mesh name="l1" file="l1.stl" />
+        <mesh name="l2" file="l2.stl" />
+        <mesh name="l3" file="l3.stl" />
+        <mesh name="l4" file="l4.stl" />
+        <mesh name="l5" file="l5.stl" />
+        <mesh name="l6" file="l6.stl" />
+    </asset>
+
+    <visual>
+        <headlight ambient="0.5 0.5 0.5"  />
+    </visual>
+
+    <compiler angle="radian" meshdir="../../meshes/sawyer"/>
+    <size njmax="500" nconmax="100"/>
+    <option
+            iterations="50"
+            integrator="Euler"
+            timestep="0.002"
+            cone="elliptic"
+    />
+
+    <default>
+        <joint limited="true"
+               damping="1"
+               stiffness="0"
+               armature=".1"
+               user="0"/>
+        <geom solref="0.008 1"
+              solimp="0.95 0.95 0.01"
+              margin="0.001"
+              user="0"
+        />
+        <motor ctrllimited="true" ctrlrange="-1 1"/>
+        <position ctrllimited="true"/>
+
+        <default class='0'>
+            <geom friction="1 0.005 0.001" rgba=".75 .6 .5 1"
+                  contype="1" conaffinity="0"/>
+        </default>
+
+        <default class='1'>
+            <geom friction="1 0.005 0.001" rgba=".7 .6 .55 1"
+                  contype="2" conaffinity="2"/>
+        </default>
+
+        <default class='arm'>
+            <joint damping="5"/>
+        </default>
+    </default>
+
+    <equality>
+        <weld body1="mocap" body2="hand" solref="0.01"></weld>
+    </equality>
+
+    <worldbody>
+        <include file="../sawyer_xyz_base.xml"></include>
+        <body name="obj" pos="0 0 0.1">
+            <joint name="objjoint" type="free" limited='false' damping="0" armature="0" />
+            <inertial pos="0 0 0" mass="1" diaginertia="100000 100000 100000"/>
+            <geom name="objbox" type="box" pos="0 0 0"
+                  size=".025 .015 .015" rgba="0.0 0.0 1.0 1"
+                  contype="6" conaffinity="6" friction="1.0 0.10 0.002" condim="4" mass=1.0, margin=0.0
+
+                  />
+        <body name="obj2" pos="0 0 0.01">
+            <geom name="obj_T" type="box" pos="0 0 0"
+                  size=".025 .017 .005" rgba="0.0 0.0 1.0 1"
+                  contype="6" conaffinity="6" friction="1.0 0.10 0.002" condim="4" mass=1.0, margin=0.0
+            />
+        </body>
+
+            <site name="obj" pos="0 .0 0" size="0.035" rgba="0.0 0.0 1.0 1"/>
+        </body>
+
+        <site name="hand-goal-site" pos="0 0 0" size="0.01"
+              rgba="1 0.5 0.5 0.5"/>
+        <site name="obj-goal-site" pos="0 0 0" size="0.01"
+              rgba="0.5 0.5 1 0.5"/>
+    </worldbody>
+    <actuator>
+        <motor gear="100" joint="rc_close"  />
+    </actuator>
+</mujoco>
