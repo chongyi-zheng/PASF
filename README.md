@@ -7,8 +7,8 @@
 </p>
 
 <p align="middle">
-  <img src="image/illus_align.png" width="425" />
-  <img src="image/vae_struct.png" width="425" />
+  <img src="image/illus_align.png" width="400" />
+  <img src="image/vae_struct.png" width="400" />
 </p>
 
 **Summary**: Deep Reinforcement Learning agents often face unanticipated environmental changes after deployment in the real world. These changes are often spurious and unrelated to the underlying problem, such as background shifts for visual input agents. Unfortunately, deep RL policies are usually sensitive to these changes and fail to act robustly against them. This resembles the problem of domain generalization in supervised learning. In this work, we study this problem for goal-conditioned RL agents. We propose a theoretical framework in the Block MDP setting that characterizes the generalizability of goal-conditioned policies to new environments. Under this framework, we develop a practical method PA-SkewFit (PASF) that enhances domain generalization. 
@@ -92,7 +92,7 @@ But you can play with other hyperparameters in python scripts under `(PASF DIR)/
 - Error and output logs can be found in `(PASF DIR)/terminal_log`.
 
 <p align="middle">
-  <img src="image/tsne.png" width="700" />
+  <img src="image/tsne.png" width="600" />
 </p>
 
 ## Questions
