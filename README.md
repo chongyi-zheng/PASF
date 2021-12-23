@@ -81,6 +81,6 @@ But you can play with other hyperparameters in python scripts under `(PASF DIR)/
 
 - Error and output logs can be found in `(PASF DIR)/terminal_log`.
 
-### Questions
+## Questions
 If you have any questions, comments, or suggestions, please reach out to Beining Han (bouldinghan@gmail.com) and Chongyi Zheng (chongyiz@andrew.cmu.edu).
 
