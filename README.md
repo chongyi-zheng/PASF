@@ -51,7 +51,6 @@ Download the goals from the following link and put it here: `(PASF DIR)/multiwor
 $ ls (PASF DIR)/multiworld/envs/mujoco
 ... goals ... 
 ```
-3. (Optional) Speed up with GPU rendering
 
 ### 3. (Optional) Speed-up with GPU rendering
 
